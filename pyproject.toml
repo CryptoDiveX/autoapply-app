@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autoapply-runtime"
+version = "1.0.0"
+description = "Isolated Hermes-compatible job-application orchestration runtime for AutoApply macOS"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Proprietary"}
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["runtime", "."]
+testpaths = ["tests"]
+addopts = "-v --tb=short"

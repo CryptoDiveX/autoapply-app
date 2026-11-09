@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "AutoApply Companion — Setup & Validation Guide",
+  "version": "1.0.0",
+  "description": "Preloaded side-panel guide that walks you through connecting OpenRouter, ChatGPT, CapSolver, Gmail App Passwords, Teal, and LinkedIn, and validates each step in one click.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1Y57SkKWwmYHpajx0+uOIL33l3FrPEM8q+sqn++KoKdLsJs3o12HvDHPULWYI9daU2f6QiVP8ONZoxOEg4l6N0PKO5FViZ2vNjVAGuUPzrcCJ2wfUiX/QzOrGbhwQlUK4KGmrAl0woRLuIs1TjOCVnv+6kyeWRKd+3NXg1t01cJ46JeFQFKxcEbkLvP58RmibR21KOfwXX5KlmYyd+QZbj8SsYEt3CH7kyCaMBJRjMakfISPR8WYVCTRnFtrj1oDKU/EO/NS/YB2hFS7ekzcRnsRy2QKSK5KqyrhRi5l8B+lz+ML5qO+4AJKHfGjlMs0Xa4F9l2fyPZf5ArSmsn7bQIDAQAB",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://127.0.0.1:19299/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "AutoApply Companion Guide",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dialog_guard_main.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}

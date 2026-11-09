@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.0.0",
+  "product_name": "AutoApply",
+  "bundle_identifier_placeholder": "app.autoapply.desktop",
+  "target_platform": {
+    "os": "macOS",
+    "minimum_os_version": "14.0",
+    "architectures": ["arm64"]
+  },
+  "isolated_runtime": {
+    "python_version": "3.13.0",
+    "hermes_upstream_repo": "https://github.com/NousResearch/hermes-agent",
+    "hermes_license": "MIT",
+    "hermes_pinned_revision": "pinned-minimal-allowlist-v1",
+    "allowlisted_skills": [
+      "application-operator",
+      "document-quality",
+      "tracker-reconciliation"
+    ],
+    "excluded_subsystems": [
+      "minecraft",
+      "telegram-gateway",
+      "fleet-scanner",
+      "arbitrary-skill-installer",
+      "shell-exec",
+      "python-eval"
+    ]
+  },
+  "bundled_tools": [
+    {
+      "name": "sops",
+      "version": "3.9.0",
+      "relative_bundle_path": "Contents/Resources/bin/sops",
+      "license": "MPL-2.0",
+      "require_developer_id_signature": true
+    },
+    {
+      "name": "age",
+      "version": "1.2.0",
+      "relative_bundle_path": "Contents/Resources/bin/age",
+      "license": "BSD-3-Clause",
+      "require_developer_id_signature": true
+    }
+  ]
+}

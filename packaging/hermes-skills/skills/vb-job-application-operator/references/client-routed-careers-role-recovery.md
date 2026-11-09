@@ -1,0 +1,8 @@
+# Client-routed careers role recovery
+
+1. Preserve conflicting live evidence when a direct job deep link renders a generic not-found shell while the current official careers board visibly lists the exact role. A router failure is not automatically a job-specific closed notice.
+2. Inspect the exact visible role card's observed clickable ancestor and href. Follow that normal current-board action in the same background tab. Never construct a replacement URL, unhide a template, alter employer code or infer availability from cached extraction.
+3. Require the normal navigation to render the complete exact role, current eligibility requirements and an actual prescribed application route. Reopen the current careers board and verify that the exact observed card still produces that complete role when the direct-link state conflicts. Save the board, control, resulting URL, full role text, timestamps and conflict separately.
+4. Immediately before outbound, read that normally reached role again in its existing target and apply all ordinary country, duplicate, document, privacy, authorization and recipient gates. Do not repeat stale company-age or personnel references in candidate copy.
+5. Defer if the normal route also says closed/not found, yields only a card snippet or hidden template, or leaves role availability uncertain. A working general intake or support inbox never authorizes bypassing a closed named vacancy.
+6. Recover only the failed read-only stage. Preserve immutable copy and partial artifacts, check send intent/result first, and never replay an upload or send to fix routing or evidence assertions.

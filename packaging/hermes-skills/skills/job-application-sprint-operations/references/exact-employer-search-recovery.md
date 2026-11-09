@@ -1,0 +1,7 @@
+# Exact-employer search recovery
+
+1. When an employer-specific query returns generic job boards without the exact employer, retry once with the quoted exact brand. Generic customer-success or product-management result pages do not establish a current vacancy at the queried company.
+2. Reject namesakes and spelling variants unless an official source establishes their relationship. Documint and Dokumint must not share employer identity, country, inventory or no-openings claims solely because search substituted one for the other.
+3. Distinguish product documentation and templates from hiring. An API example for fetching a job or a document-generation product's job-description template is not that product vendor's vacancy.
+4. Preserve the original inconclusive search and the exact-brand recovery. If neither yields an observed official current route, save the supply shortfall and move to another source without inventing a careers path or promoting the employer.
+5. For dictionary-word employer names such as Remote, token boundaries alone do not establish a lifecycle match. Bind prior work to the exact Teal company, observed employer domain or native posting ID and inspect the containing application section. Ordinary work-mode prose and third-party listings on a broad jobs marketplace are not same-employer evidence. Retain rejected generic-name hits and recover only the read-only filter before candidate actions.

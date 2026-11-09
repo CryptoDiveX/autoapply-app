@@ -1,0 +1,7 @@
+# Public JazzHR basic widget inventory
+
+1. When an official careers page embeds an observed `https://app.jazz.co/widgets/basic/create/<employer>` script, GET that exact public script. Parse only its shipped job-card HTML literal offline and retain every title, location and observed application link. Never execute JavaScript or invoke apply-toggle handlers.
+2. Compare exact detail responses with the current inventory. An older Sales Operations listing can return HTTP410 while the current widget has only a general pool and a Toronto engineering role. Preserve exact-role closure separately from employer-wide availability.
+3. Bind sister brands when identical Manifest travel-product PM descriptions appear on Checkfront and Rezdy boards. Select one strongest role and retain recruiting-entity and Georgia-onboarding uncertainty instead of manufacturing multiple cleared employers. Do not transfer parent or sibling HQ claims to the exact hiring entity.
+4. Treat a Remote card or Canadian-citizenship option as distinct from permission to engage a candidate based in Batumi. Preserve actual questions and geography wording. A required Human Check label is an unresolved security gate, never a solved challenge or submission.
+5. Treat already-received-resume strings in unfilled native form markup as inactive templates unless actual candidate state and normal submission proof establish otherwise.

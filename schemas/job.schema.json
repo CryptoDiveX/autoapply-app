@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autoapply.app/schemas/job.schema.json",
+  "title": "AutoApply Canonical Job and Eligibility Schema",
+  "type": "object",
+  "required": [
+    "job_id",
+    "direct_employer_id",
+    "canonical_role_id",
+    "canonical_url",
+    "title",
+    "workplace_mode",
+    "eligible_countries",
+    "sponsorship_offered",
+    "is_open"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "job_id": {"type": "string", "minLength": 1},
+    "direct_employer_id": {"type": "string", "minLength": 1},
+    "recruiter_agency_id": {"type": ["string", "null"]},
+    "canonical_role_id": {"type": "string", "minLength": 1},
+    "canonical_url": {"type": "string", "format": "uri"},
+    "title": {"type": "string", "minLength": 1},
+    "workplace_mode": {
+      "type": "string",
+      "enum": ["remote", "hybrid", "onsite"]
+    },
+    "eligible_countries": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 2}
+    },
+    "sponsorship_offered": {"type": "boolean"},
+    "is_open": {"type": "boolean"}
+  }
+}

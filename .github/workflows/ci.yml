@@ -1,0 +1,32 @@
+name: AutoApply macOS CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]" pytest
+
+      - name: Build Swift Package
+        run: |
+          swift build -c release
+
+      - name: Run Python & Contract Test Suite
+        run: |
+          pytest -q -k "not test_macos_app_and_dmg_installer"

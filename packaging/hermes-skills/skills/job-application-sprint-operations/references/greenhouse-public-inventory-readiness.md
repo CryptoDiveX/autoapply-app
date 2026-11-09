@@ -1,0 +1,5 @@
+# Public Greenhouse inventory readiness
+
+1. Treat a static careers counter saying Currently displaying all 0 as unresolved until the site's published inventory fetch finishes or its exact observed public API is inspected. A Webflow Roofr careers page can retain that initial counter while its own script fetches twelve active Greenhouse roles. Save both shell and actual inventory, and never turn an uninitialized counter into employer-wide closure.
+2. Inspect only the exact employer-linked public bundle when a legacy careers shell omits role links. An Alloy-style bundle can load the read-only departments?render_as=tree inventory instead of a flat jobs list. Flatten the returned jobs, deduplicate by exact ID, and fetch the exact selected current job through the read-only route published in that same bundle. Do not execute scripts or call candidate endpoints.
+3. Preserve currentness and eligibility separately. An older removed mirror does not close a new native ID with the same title. A worldwide mirror does not override that current role's explicit US-only country wording. Current inventory retrieval is source evidence, not an eligible lead or application credit.

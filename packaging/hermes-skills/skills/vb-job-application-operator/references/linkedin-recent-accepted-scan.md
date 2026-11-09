@@ -1,0 +1,31 @@
+# Bounded recent accepted-connection scan
+
+1. Use the sole background Cloak owner and existing accepted-check request. Inspect the actual monitor schema and person records, including original invitation notes, outgoing messages and uncertain intents. Match observed canonical profile paths while retaining exact stored URLs and aliases.
+2. Inspect the normal LinkedIn connections page in a background target after bounded readiness. Scope profile anchors to visible connection cards, not page-wide suggestions. Current cards may use `[componentkey^="ConnectionCard_"]`; older cards use `li.mn-connection-card`. Save bounded scroll batches locally, print only recorded job-contact matches, and deduplicate repeated cards by observed profile identity. Preserve partial coverage for older contacts not reached.
+3. A newly accepted card is discovery, not send authorization by itself. Verify the exact current profile, employer/job relationship, country eligibility, original empty invitation note, canonical person-keyed outreach events and all durable send intents. Skip previous real notes/messages and uncertain sends. Never contact unrelated accepted people as job leads.
+4. Open only the exact observed recipient-specific Message href. Search loaded conversation history by the exact person name, inspect loaded events and verify the named first-degree composer and empty editor. Save those checks together; a generic new-message URL alone does not establish empty history.
+5. Use scoped Sonnet for one role-specific first message, preserving immutable request/raw/parsed revisions and claim QA. Honor the active per-tick send limit. Persist a person-keyed exclusive send intent before a single Send action.
+6. Require the actual created thread, exact outgoing text and sender, empty editor and fresh reload of that same thread. After errors, recover only read-only verification, never Send again for cleaner proof.
+7. Record exact sent text/thread in canonical outreach SQLite. Export the complete CSV and check full-field parity. Update monitor and runs with explicit columns: `sent_count` counts messages, not newly accepted contacts. Append readable Notes to the exact Teal record without changing application status/date/source/follow-up. Verify exact API state and rendered paragraph boundaries.
+8. Retain other newly accepted contacts as pending current-employer/country/history checks. One message is not full invitation coverage. Preserve previous receipts and unrelated request fields, count zero new applications and close only the owned completed recipient target.
+
+## Native message-history search readiness
+
+1. On LinkedIn's current Ember messaging UI, a populated Search messages input and Enter events can leave the pane at Search inbox without executing the query. Do not call this empty conversation history. Keep the exact recipient composer unchanged, enable CDP focus emulation, focus the observed search input, use native insertion, then dispatch Enter with text and unmodifiedText set to a carriage return. Require the settled exact-name no-results text or actual matching conversations before any candidate draft or intent.
+2. Search navigation can briefly remove the composer while the URL changes to thread/new with recipient and searchTerm. Wait on that same target for the named first-degree composer and empty editor, then recheck history and recipient together. If the no-results pane later disappears before staging, refresh only the read-only search. Never repeat Send or retype an already-staged candidate message to repair search readiness.
+
+## Recipient composer readiness after an empty history search
+
+Require a visible named recipient composer as a separate gate from an exact-name no-results search. LinkedIn can settle to `thread/new?recipient=...&searchTerm=...` with genuine empty search results but no contenteditable or first-degree composer. Preserve the observed recipient-specific Message href and allow one bounded recovery through that person's actual profile Message control. If both normal routes still expose no editor, log `accepted_history_search_empty_composer_unavailable_no_send`, keep the review pending and return to applications. Do not draft, persist a send intent, infer an outgoing message, invent a thread route or retry another person's Message control. Record an empty message and null sent timestamp in outreach, preserve Teal status and dates, and never make a full monitoring-coverage claim from this partial review.
+
+## Intent-purpose attribution
+
+Classify an exact person's historical send intent by its actual channel and resolve it against its original positive receipt before treating it as an uncertain DM. A completed connection invitation with an empty actually sent note and exact recipient-specific Pending or Sent proof does not establish a previous DM. Preserve that resolved invitation history and still require all person-keyed DM intents, monitor records, canonical events and loaded live conversation checks. A prepared but unsent invitation note is not sent text; an unresolved invitation or DM outcome remains a no-retry gate. Recover only this read-only attribution step after an overbroad intent filter, never replay the invitation or any message.
+
+## Read-only verifier recovery
+
+Validate expected Notes headings and separate actual bullet paragraphs, not an arbitrary universal paragraph-count minimum. Short valid reviews can have fewer paragraphs than long application notes. Preserve failed readbacks and repair only the read-only assertion, never replaying messages or Notes mutations.
+
+## Observed Message destination returns an error
+
+When a verified first-degree profile's exact observed Message href renders Something went wrong or Refresh the page, preserve that same-target error and treat conversation history as unresolved, not empty. Allow one bounded recovery through the actual recipient-specific Message control on the verified profile. If it still yields no writable named composer, record the accepted contact with an empty message and null sent timestamp, preserve the application's original Teal stage/date/source/follow-up, retain partial monitoring and return to applications. Do not construct an alternative thread URL, draft candidate text, create a send intent or repeat invitation to work around the error.

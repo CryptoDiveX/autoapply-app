@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-10-18T22:38:00+04:00",
+  "baseline_package_version": "1.0 (2026-10-18)",
+  "note": "Initial gate ledger per C-12 and 05-INTEGRATIONS-AND-RELEASE-GATES.md. All gates remain unapproved until primary vendor agreements, technical spike evidence, and explicit founder decisions are recorded.",
+  "gates": [
+    {
+      "id": "G-01",
+      "title": "CloakBrowser OEM/Redistribution Rights, Free-Tier Eligibility & Isolation",
+      "owner_role": "vendor_legal_review_owner",
+      "secondary_owner_role": "release_lead",
+      "status": "unapproved",
+      "published_permission_state": "Official CloakBrowser binary licence restricts third-party redistribution, bundling, embedding, and customer-facing browser control without a separate OEM/SaaS agreement; README and BINARY-LICENSE.md differ on latest-build free tier eligibility [12][13][14].",
+      "technically_observed_capability": "Wrapper docs describe a free GitHub-authenticated key with a 1-concurrent-session limit and profile flags, but isolated cache/licence/profile paths and extension loading in a bundled Mac product have not yet been verified via live spike.",
+      "required_evidence": [
+        "Written vendor OEM/distribution/customer-browser-control agreement or verified compliant direct-download architecture approved by founder and legal review",
+        "P01 spike artifact (docs/evidence/browser-licensing.md) recording exact version, free GitHub key activation terms, 1-session concurrency time-multiplexing across profiles, and entitlement loss handling",
+        "Passing coexistence test (tests/coexistence/test_browser_paths.py) proving app-owned browser binary, profile, cache, and licence paths never read or overwrite an existing user CloakBrowser installation"
+      ],
+      "dependent_requirements": ["AA-INS-002", "AA-INS-004", "AA-AUTH-003", "NFR-01", "C-01", "C-07"],
+      "dependent_decisions": ["D-01"],
+      "dependent_features": [
+        "Bundled or auto-provisioned CloakBrowser installation",
+        "GitHub-authenticated free browser entitlement activation during onboarding (O-03)",
+        "Time-multiplexed isolated browser profiles for auth, ATS, Teal, and LinkedIn"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Keep CloakBrowser provisioning gated behind vendor clearance; use an explicitly founder-approved isolated Chromium/Playwright test engine for local ATS fixture development only (never silently substituted as the customer browser)."
+    },
+    {
+      "id": "G-02",
+      "title": "Paid-Product ChatGPT / Codex Commercial Integration & App Registration",
+      "owner_role": "integration_lead",
+      "secondary_owner_role": "vendor_legal_review_owner",
+      "status": "unapproved",
+      "published_permission_state": "OpenAI Sign in with ChatGPT / token-sharing documentation distinguishes local open-source tools from paid/commercial products and requires commercial client registration/partner approval [3][4][5][6][7].",
+      "technically_observed_capability": "Codex OAuth / app-server protocol is documented, but commercial client ID registration and whether remote-session toggles are required for the approved commercial connector remain unverified.",
+      "required_evidence": [
+        "Written OpenAI commercial client registration/approval for a paid desktop application (USD 20/month)",
+        "P02 spike verification of per-installation PKCE/loopback sign-in using customer's own account (never copied founder/developer client tokens)",
+        "Documented determination of whether Codex remote-session settings are required for the chosen connector, with user-performed security consent and return capability check (C-03)"
+      ],
+      "dependent_requirements": ["AA-AUTH-002", "AA-JOB-004", "C-03"],
+      "dependent_decisions": ["D-02"],
+      "dependent_features": [
+        "ChatGPT subscription sign-in for primary Hermes browser orchestration (O-04)",
+        "Guided Codex remote-session onboarding shortcut"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Show ChatGPT/Codex connector as honestly unavailable/gated in O-04 until commercial registration is granted; require explicit founder decision (D-02) if launching initially with OpenRouter-backed orchestration."
+    },
+    {
+      "id": "G-03",
+      "title": "Exact Model Capability & Dolphin Typed-Action Orchestration Adapter",
+      "owner_role": "integration_lead",
+      "secondary_owner_role": "founder_product_lead",
+      "status": "unapproved",
+      "published_permission_state": "OpenRouter public catalog (checked 2026-10-18) lists anthropic/claude-sonnet-5.5 (text+image+file->text, tools, structured_outputs) and cognitivecomputations/dolphin-mistral-24b-venice-edition (text->text only; no native tools/tool_choice advertised; no :free variant in snapshot) [11].",
+      "technically_observed_capability": "Catalog metadata only; no funded runtime inference or structured DOM action-proposal benchmark has been executed yet.",
+      "required_evidence": [
+        "P02 contract tests (tests/contract/test_provider_capabilities.py) enforcing exact model IDs (cognitivecomputations/dolphin-mistral-24b-venice-edition and anthropic/claude-sonnet-5.5) with zero silent :free or paid model substitution",
+        "Deterministic typed-action proposal adapter and schema/permission validator for Dolphin tested against controlled ATS DOM fixtures (malformed output, unauthorized actions, unknown fields, no-progress timeout, text-only observation limits)",
+        "Consented funded capability smoke check proving runtime completion and budget enforcement"
+      ],
+      "dependent_requirements": ["AA-AUTH-001", "AA-DOC-001", "AA-JOB-004", "NFR-03", "C-03"],
+      "dependent_decisions": ["D-03"],
+      "dependent_features": [
+        "Fallback browser orchestration via cognitivecomputations/dolphin-mistral-24b-venice-edition",
+        "Primary copywriting via anthropic/claude-sonnet-5.5"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "If Dolphin fails deterministic typed-action fixture benchmarks or encounters vision-mandatory steps, mark Dolphin browser orchestration blocked and require explicit founder approval (D-03) before enabling any alternative orchestration model."
+    },
+    {
+      "id": "G-04",
+      "title": "Gmail Onboarding Flow: Automated App-Password Eligibility vs. Desktop OAuth",
+      "owner_role": "founder_product_lead",
+      "secondary_owner_role": "security_lead",
+      "status": "unapproved",
+      "published_permission_state": "Google requires 2-Step Verification for App Passwords and disables them for Advanced Protection, certain Workspace policies, and specific security-key configurations; Google recommends OAuth 2.0 with PKCE for native desktop apps [19][20].",
+      "technically_observed_capability": "Unattended background creation/scraping of Google security pages violates security boundaries; trusted native secret capture vs. OAuth PKCE loopback must be spiked in P03/P04.",
+      "required_evidence": [
+        "Founder decision (D-04) selecting OAuth-first with eligible guided app-password fallback vs. app-password-first",
+        "P03/P04 spike proving whether a permitted user-authenticated app-password flow can transfer the generated credential via a trusted native secret path (suppressing agent DOM, screenshots, traces, clipboard history, and extensions per C-04/C-07)",
+        "Acceptance test coverage (T-MAIL-02) for 2SV-disabled, Advanced Protection, and Workspace-managed account states"
+      ],
+      "dependent_requirements": ["AA-MAIL-001", "AA-MAIL-002", "AA-MAIL-003", "C-04", "C-07"],
+      "dependent_decisions": ["D-04"],
+      "dependent_features": [
+        "O-05 Gmail connection onboarding",
+        "Long-lived Gmail authentication and credential storage in SOPS+age via CredentialBroker"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Recommend Desktop OAuth PKCE as primary default (subject to D-04 approval) alongside an eligibility-checked, user-consented App Password flow using native masked secret capture."
+    },
+    {
+      "id": "G-05",
+      "title": "Gmail Production Verification, Transport Blast Radius & Cloud LLM Data Boundary",
+      "owner_role": "security_lead",
+      "secondary_owner_role": "integration_lead",
+      "status": "unapproved",
+      "published_permission_state": "Gmail API sensitive/restricted scopes require production OAuth client verification, Limited Use compliance, and security assessment where applicable, especially when transmitting Google user data to third-party cloud LLM processors [21].",
+      "technically_observed_capability": "Local deterministic header/thread correlation can operate without cloud LLMs, whereas sending email bodies/attachments to OpenRouter/Anthropic/OpenAI triggers third-party processor rules.",
+      "required_evidence": [
+        "Explicit transport & scope specification (Gmail API least-privilege scopes vs. IMAP/SMTP blast radius) in docs/evidence/google.md",
+        "Enforced PolicyBroker default-deny gate blocking Google-derived data (bodies, summaries, embeddings, screenshots, attachments) from cloud models until processor/verification approval is recorded (C-05)",
+        "Verified production Google OAuth client registration and Limited Use compliance sign-off"
+      ],
+      "dependent_requirements": ["AA-MAIL-003", "AA-MAIL-004", "AA-MAIL-005", "NFR-04", "C-05"],
+      "dependent_decisions": ["D-04"],
+      "dependent_features": [
+        "Production Gmail OAuth access",
+        "Cloud LLM classification/summarization of recruiter emails"
+      ],
+      "approver": "security_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Enforce strict default-deny on sending any Google-derived mail data to external LLMs; ship local deterministic thread/header/bounce reconciliation first while Google verification is pending."
+    },
+    {
+      "id": "G-06",
+      "title": "CapSolver Extension Redistribution, Compatibility & Ephemeral Runtime Key Delivery",
+      "owner_role": "security_lead",
+      "secondary_owner_role": "integration_lead",
+      "status": "unapproved",
+      "published_permission_state": "CapSolver developer docs describe extension loading and API-key configuration via assets/config.js or runtime storage [15], but writing customer keys into plaintext on-disk extension files violates AA-AUTH-004 and C-07.",
+      "technically_observed_capability": "Extension packaging, redistribution permission, CloakBrowser compatibility, and ephemeral runtime key injection without persistent plaintext files have not yet been tested.",
+      "required_evidence": [
+        "Verification of CapSolver extension redistribution/bundling rights and pinned version integrity",
+        "P04/P26 spike proving ephemeral runtime key delivery into the isolated ATS browser profile without rewriting distributed extension source files in plaintext",
+        "Enforcement of host/profile isolation (CapSolver excluded from trusted auth/Google/Teal/LinkedIn profiles per C-07) and human handoff on site access restrictions"
+      ],
+      "dependent_requirements": ["AA-AUTH-004", "AA-JOB-007", "NFR-02", "C-07"],
+      "dependent_decisions": ["D-07"],
+      "dependent_features": [
+        "Preinstalled/enabled CapSolver extension in owned ATS browser profile (O-06)",
+        "Automated permitted challenge assistance within customer budget"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Keep CapSolver disabled until ephemeral key injection and host-allowlist isolation pass T-SEC-03; always hand off security challenges to the user in takeover mode."
+    },
+    {
+      "id": "G-07",
+      "title": "Teal Job Tracker Approved Integration Route",
+      "owner_role": "integration_lead",
+      "secondary_owner_role": "vendor_legal_review_owner",
+      "status": "unapproved",
+      "published_permission_state": "Teal documentation and Terms of Service govern service access; no public partner write API was established in initial research, and a customer browser login does not grant commercial API/scraping licence [16][17].",
+      "technically_observed_capability": "Private endpoints observed in personal VB Jobs workflows are not a commercial contract and must not be hardcoded as an unapproved product API.",
+      "required_evidence": [
+        "Documented vendor partnership/API approval or explicitly permitted customer-session integration recorded in docs/evidence/teal.md",
+        "Contract test (tests/contract/test_tracker_identity.py) verifying exact canonical URL/role/account matching, sibling record preservation, and post-write field readback (C-10)"
+      ],
+      "dependent_requirements": ["AA-AUTH-005", "AA-TRACK-001", "AA-TRACK-002", "C-10"],
+      "dependent_decisions": ["D-05"],
+      "dependent_features": [
+        "Automated synchronization of verified applications to https://app.tealhq.com/job-tracker"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Maintain authoritative local SQLite ledger with durable outbox (sync_pending) and one-click CSV/JSON export while Teal partner/integration permission is pending (requires D-05 confirmation for launch)."
+    },
+    {
+      "id": "G-08",
+      "title": "LinkedIn Automated Networking Platform Permission",
+      "owner_role": "vendor_legal_review_owner",
+      "secondary_owner_role": "founder_product_lead",
+      "status": "unapproved",
+      "published_permission_state": "LinkedIn official policy strictly prohibits unauthorized bots, scrapers, and extensions that automate website activity, including profile reading, connection-status polling, invitations, and messaging [18].",
+      "technically_observed_capability": "Browser session retention is technically possible, but any automated LinkedIn read, scrape, poll, connection request, message, or follow-up violates published platform terms unless executed via an approved partner program.",
+      "required_evidence": [
+        "Written LinkedIn partner/API approval covering contact lookup, connection invitations, messaging, and status polling, OR",
+        "Explicit founder sign-off on D-06 to launch with automated LinkedIn reads/sends hard-blocked by PolicyBroker (T-SOC-01) and provide only local reviewed drafts, follow-up reminders, and genuine user-operated handoff"
+      ],
+      "dependent_requirements": ["AA-AUTH-005", "AA-SOC-001", "AA-SOC-002", "C-08"],
+      "dependent_decisions": ["D-06"],
+      "dependent_features": [
+        "Automated LinkedIn profile/contact extraction and reply polling",
+        "Automated LinkedIn connection requests, initial messages, and follow-ups"
+      ],
+      "approver": "founder_product_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Hard-gate all automated LinkedIn reads/writes/polls in PolicyBroker; enable local draft generation, cadence reminders, and manual user-operated handoff with transparent UI labelling (subject to D-06 approval)."
+    },
+    {
+      "id": "G-09",
+      "title": "macOS Developer ID Signing, Notarization, Helper Containment & TCC Identity",
+      "owner_role": "release_lead",
+      "secondary_owner_role": "security_lead",
+      "status": "unapproved",
+      "published_permission_state": "macOS direct distribution requires Developer ID signing, Hardened Runtime, and Apple notarization for the app bundle and all nested binaries/runtimes; TCC permissions bind to signed code identities and must be requested individually [22][23].",
+      "technically_observed_capability": "Local development builds can run ad-hoc signed, but clean-machine Gatekeeper acceptance, nested Python/Hermes/browser signing, Keychain ACL continuity across updates, and helper sandbox containment require real Developer ID credentials and clean-Mac verification.",
+      "required_evidence": [
+        "Provisioned Apple Developer ID Application/Installer certificates and final reverse-DNS bundle identifier (D-09)",
+        "P03/P04/P07 containment & permission spike (docs/evidence/macos-permissions.md) documenting exact per-process filesystem/network/IPC/Keychain authority and adversarial bypass tests (C-06)",
+        "Clean-machine installation, notarization stapling, update rollback, and TCC permission grant/denial/revocation evidence (T-INS-01..06, T-PERM-01..03, T-REL-01)"
+      ],
+      "dependent_requirements": ["AA-INS-001", "AA-INS-004", "AA-UX-004", "NFR-02", "NFR-09", "C-01", "C-06"],
+      "dependent_decisions": ["D-08", "D-09"],
+      "dependent_features": [
+        "One-go signed/notarized macOS installation without Gatekeeper workarounds",
+        "Scoped macOS TCC permission onboarding (O-08)",
+        "Keychain-backed age private key custody across app updates"
+      ],
+      "approver": "release_lead",
+      "approval_artifact": null,
+      "approval_date": null,
+      "recheck_or_expiry_date": "2026-11-18",
+      "founder_approved_reduced_scope_disposition": null,
+      "proposed_reduced_scope_option": "Develop and test locally using development signing and explicit mock/local classification; block commercial distribution until Developer ID signing, notarization, and clean-Mac tests pass."
+    }
+  ]
+}

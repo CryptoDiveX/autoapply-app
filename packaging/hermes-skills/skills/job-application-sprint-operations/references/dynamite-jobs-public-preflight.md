@@ -1,0 +1,6 @@
+# Employer-prescribed Dynamite Jobs public preflight
+
+1. Follow the employer's exact published partner link. An employer can explicitly prohibit using its otherwise functional native Apply form. Do not substitute that form or an uninvited inbox to bypass the prescribed route.
+2. Treat an HTTP200 partner page containing only the site shell and SEO role title as incomplete form evidence, not near-ready intake or closure. Inspect only the observed public application module offline when useful, without executing code, account lookup, candidate entry or mutations.
+3. Preserve the exact candidate-visible account and terms wording. A public JobApplyView component can require an email/account stage and show `By agreeing to these Terms and Conditions you acknowledge that Dynamite Jobs will generate an account on your behalf.` with `Accepting terms is required` validation. Standard job-platform credentials do not authorize terms acceptance.
+4. Keep live account state, later questions, challenge status and consent authorization unresolved until the sole owner can inspect them safely. Public module metadata is not a submission or permission to accept terms. Maintain country, exact-role geography, duplicate and approved-document gates independently.

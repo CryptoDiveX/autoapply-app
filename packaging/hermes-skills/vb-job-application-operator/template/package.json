@@ -1,0 +1,15 @@
+{
+  "name": "vb-jobs-application-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VB Jobs reusable DOCX application template staging folder",
+  "scripts": {
+    "check:resume": "node --check build_resume.js",
+    "check:letter": "node --check build_letter.js",
+    "build:resume": "node build_resume.js",
+    "build:letter": "node build_letter.js"
+  },
+  "dependencies": {
+    "docx": "latest"
+  }
+}

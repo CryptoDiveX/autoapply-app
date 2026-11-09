@@ -1,0 +1,15 @@
+{
+  "name": "vb-jobs-whatsapp-cli",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VB Jobs WhatsApp outreach CLI with persistent LocalAuth",
+  "type": "commonjs",
+  "scripts": {
+    "send": "node send.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.34.2"
+  }
+}

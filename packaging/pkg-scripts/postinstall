@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Terminate any existing running or hung AutoApply instance before replacing/bootstrapping
+killall -9 AutoApply 2>/dev/null || true
+
+INSTALLED_APP="${2:-/Applications}/AutoApply.app"
+if [[ ! -d "${INSTALLED_APP}" && -d "/Applications/AutoApply.app" ]]; then
+    INSTALLED_APP="/Applications/AutoApply.app"
+fi
+
+# 1. Clear quarantine attributes on the app bundle and nested Browser / binaries
+if [[ -d "${INSTALLED_APP}" ]]; then
+    xattr -cr "${INSTALLED_APP}" 2>/dev/null || true
+    chmod +x "${INSTALLED_APP}/Contents/MacOS/AutoApply" 2>/dev/null || true
+    chmod +x "${INSTALLED_APP}/Contents/Resources/python-env/bin/python3" 2>/dev/null || true
+fi
+
+# 2. Resolve the active macOS console user and home directory
+CONSOLE_USER="$(stat -f "%Su" /dev/console 2>/dev/null || true)"
+if [[ -z "${CONSOLE_USER}" || "${CONSOLE_USER}" == "root" ]]; then
+    CONSOLE_USER="${USER:-$(id -un)}"
+fi
+
+USER_HOME=""
+if [[ -n "${CONSOLE_USER}" ]]; then
+    USER_HOME="$(dscl . -read "/Users/${CONSOLE_USER}" NFSHomeDirectory 2>/dev/null | awk '{print $2}' || true)"
+fi
+if [[ -z "${USER_HOME}" || ! -d "${USER_HOME}" ]]; then
+    USER_HOME="${HOME:-/Users/${CONSOLE_USER}}"
+fi
+
+DATA_ROOT="${USER_HOME}/Library/Application Support/AutoApply"
+
+# 3. Pre-provision isolated workspace directories and pre-bootstrap runtime state
+if [[ -d "${USER_HOME}" ]]; then
+    mkdir -p \
+        "${DATA_ROOT}/runtime-state/hermes" \
+        "${DATA_ROOT}/browser-profiles/google_mail/Default" \
+        "${DATA_ROOT}/browser-profiles/teal/Default" \
+        "${DATA_ROOT}/browser-profiles/linkedin/Default" \
+        "${DATA_ROOT}/browser-profiles/ats_ephemeral/Default" \
+        "${DATA_ROOT}/browser-profiles/extension_automation/Default" \
+        "${DATA_ROOT}/vault" \
+        "${DATA_ROOT}/knowledge-base" \
+        "${DATA_ROOT}/profile" \
+        "${DATA_ROOT}/resumes/base" \
+        "${DATA_ROOT}/resumes/generated" \
+        "${DATA_ROOT}/voice-interviews"
+
+    PYTHON_WRAPPER="${INSTALLED_APP}/Contents/Resources/python-env/bin/python3"
+    BRIDGE_SCRIPT="${INSTALLED_APP}/Contents/Resources/runtime/autoapply/app_bridge.py"
+    if [[ -x "${PYTHON_WRAPPER}" && -f "${BRIDGE_SCRIPT}" ]]; then
+        PYTHONPATH="${INSTALLED_APP}/Contents/Resources/runtime" \
+            "${PYTHON_WRAPPER}" "${BRIDGE_SCRIPT}" \
+            --app-support-dir "${DATA_ROOT}" \
+            --action bootstrap_all >/dev/null 2>&1 || true
+    fi
+
+    if [[ "$(id -u)" == "0" && -n "${CONSOLE_USER}" && "${CONSOLE_USER}" != "root" ]]; then
+        chown -R "${CONSOLE_USER}:staff" "${DATA_ROOT}" 2>/dev/null || true
+        chown -R "${CONSOLE_USER}:admin" "${INSTALLED_APP}" 2>/dev/null || true
+        rm -rf /Applications/.AutoApply_old_* 2>/dev/null || true
+    fi
+fi
+
+exit 0

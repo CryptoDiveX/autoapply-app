@@ -1,0 +1,35 @@
+founder_request,requirement_ids,disposition
+Standalone commercial native macOS app,AA-INS-001;AA-UX-001;AA-LIC-001,Native shell plus direct signed distribution
+Clean minimal bundled Hermes; no Minecraft/unrelated skills,AA-INS-002;AA-INS-003,Pinned allowlisted runtime
+No interference with existing Hermes/Python/browsers/software,AA-INS-002;NFR-01,Coexistence is an explicit release test
+One smooth install; approved supplemental dependencies,AA-INS-004;AA-INS-001,"Private verified provisioning, not global bootstrap"
+Free CloakBrowser plus GitHub entitlement login,AA-AUTH-003,Retained; OEM/distribution and entitlement gate G-01
+Native GUI/menu bar,AA-UX-001,Native shell and owned browser
+OpenRouter key,AA-AUTH-001,Native secret field and budgets
+Optional ChatGPT login and Codex remote-session settings,AA-AUTH-002,"Retained with supported paid-product integration and user security consent, G-02"
+Gmail only plus separate Google account footer,AA-MAIL-001,Exact footer and account identity
+Guided app-password setup and durable Gmail access,AA-MAIL-002;AA-MAIL-003,"Retained eligibility-gated flow; OAuth-first is proposed owner decision, G-04/G-05"
+SOP Age Key secure storage with no manual setup,NFR-02;AA-AUTH-001,SOPS+age interpretation explicit; per-install protected key custody
+Scripted CapSolver extension installation/enabled plus user key,AA-AUTH-004,Retained subject to secure configuration/rights gate G-06
+Teal login and retained session,AA-AUTH-005;AA-TRACK-001,"Login distinct from approved sync route, G-07"
+LinkedIn login and retained session,AA-AUTH-005;AA-SOC-001,"Owned session; automation rights are separate, G-08"
+Broad Mac control permission onboarding,AA-UX-004,"Capability checklist; individual user-mediated approvals, G-09"
+Import current primary resume into knowledge base,AA-KB-001;AA-KB-002,Immutable original plus reviewed extracted facts
+Use KB for form answers,AA-KB-002;AA-KB-005;AA-JOB-004,"Scoped confirmed facts, no invented personal answers"
+Tailor resume and cover letters to job,AA-DOC-001;AA-DOC-003,Full requested tailoring retained
+Preserve reference resume format/style,AA-DOC-002;AA-DOC-005,"Deterministic style profile, visual/text QA"
+Compound manually corrected answers for future autofill,AA-KB-005,Review/provenance/scoping prevents untrusted learning
+"Audio self-interview, common target-role questions, transcription",AA-KB-003,"Optional voice/text, corrected transcript and consent"
+US application questions,AA-KB-004,Country-specific authorization plus optional sensitive disclosures
+Smooth resumable onboarding,AA-UX-001;AA-KB-003,Thirteen guided screens with prerequisite status
+Foreground/background with visible correction,AA-UX-002;AA-UX-003,"Visibility separate from autonomy, takeover lease"
+Hermes browser/click orchestration with Codex auth,AA-AUTH-002;AA-JOB-004,Supported product integration and typed execution gates
+Exact Dolphin fallback model,AA-AUTH-001;NFR-03,Identifier preserved; tool/vision capability gate G-03
+Sonnet 5.5 copywriting,AA-DOC-001,Exact role ID and provider capability snapshot
+LinkedIn connections/messages/follow-ups,AA-SOC-001;AA-SOC-002,"Full scope retained, automated sends gated by platform permission"
+Track all applications in Teal,AA-TRACK-001;AA-TRACK-002,Local durable ledger plus exact readback and pending sync
+First five days free,AA-LIC-001;AA-LIC-002,120-hour trial proposed; exact start rules need owner approval
+USD20/month licence,AA-LIC-001;AA-LIC-004,External usage separate; hosted checkout/account/entitlement
+Website purchase and paste licence key in app,AA-LIC-001;AA-LIC-004,"Website/portal, activation/validation/cancellation and expiry"
+Use current VB Jobs setup as baseline,AA-DOC-004;NFR-03,Sanitized parity lessons; no private profile distribution
+Requirements/specifications and giant prompt package,NFR-09,This package includes consolidated self-contained handoff plus phased prompts

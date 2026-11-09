@@ -1,0 +1,6 @@
+# Recruiterflow geography and schema preflight
+
+1. Inspect the exact observed careers iframe before calling a parent board empty. Follow its published Recruiterflow route, save the live inventory and select the exact observed role URL.
+2. Compare the visible role location with that same role's current public jobData.google_for_jobs_fragment.jobLocation and remote_type. A visible `remote` label can coexist with Bangalore, India in current structured metadata and no worldwide applicant scope. Preserve both and defer Georgia onboarding until resolved; a country selector or IP-derived phone default does not establish hiring eligibility.
+3. Read the current form component's public jobData.application_form for requirement_type values. Native input.required can be false for mandatory resume, experience and location blocks. Keep optional, off and mandatory fields separate and inspect actual subfield validation before entry.
+4. Limit read-only React inspection to public job metadata, candidate-field definitions and handler source. Do not serialize security envelopes or whole component state. Convert component types to a string name before returning JSON, because raw React type objects or functions can prevent CDP returnByValue. Recover only this read-only inspection after a serialization failure, never repeat any upload or submission.

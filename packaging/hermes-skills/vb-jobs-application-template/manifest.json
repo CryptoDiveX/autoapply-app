@@ -1,0 +1,11 @@
+{
+  "stage_dir": "~/Hermes/job-applications/vb-jobs-application-template",
+  "headshot_source_docx": "~/.hermes/profiles/vb-jobs/skills/productivity/vb-job-application-operator/references/generated-application-documents/Alex-Mercer-Resume-InDrive-Photo_1.docx",
+  "headshot_member": "word/media/d43d93144f0512a18d98752169d5e39a2cac3c1c.png",
+  "headshot_size_bytes": 1010131,
+  "headshot_sha256": "219c379067bdd2b09ea0a6a56aa72f6a0454725cef484a7dd652510160f52cc1",
+  "builders": [
+    "build_resume.js",
+    "build_letter.js"
+  ]
+}

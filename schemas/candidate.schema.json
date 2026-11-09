@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autoapply.app/schemas/candidate.schema.json",
+  "title": "AutoApply Candidate Fact and Question Memory Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "key",
+    "category",
+    "value",
+    "source_type",
+    "source_ref",
+    "confidence",
+    "confirmed",
+    "scope",
+    "effective_from",
+    "version"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "key": {"type": "string", "minLength": 1},
+    "category": {
+      "type": "string",
+      "enum": [
+        "employment",
+        "education",
+        "skill",
+        "project",
+        "contact",
+        "work_authorization",
+        "residence_location",
+        "compensation",
+        "availability",
+        "voluntary_demographic",
+        "job_specific_answer"
+      ]
+    },
+    "value": {"type": ["object", "string", "number", "boolean", "array"]},
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "resume_extracted_unconfirmed",
+        "user_confirmed_resume",
+        "user_confirmed_interview",
+        "user_confirmed_form_correction"
+      ]
+    },
+    "source_ref": {"type": "string", "minLength": 1},
+    "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+    "confirmed": {"type": "boolean"},
+    "scope": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["this_form", "employer", "country", "global"]
+        },
+        "country": {"type": ["string", "null"]},
+        "employer_id": {"type": ["string", "null"]},
+        "form_id": {"type": ["string", "null"]}
+      },
+      "required": ["level"],
+      "additionalProperties": false
+    },
+    "effective_from": {"type": "string"},
+    "supersedes_id": {"type": ["string", "null"]},
+    "version": {"type": "integer", "minimum": 1}
+  }
+}

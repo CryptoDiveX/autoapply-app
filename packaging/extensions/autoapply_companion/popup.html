@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AutoApply Companion</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 340px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+      background: #0f1420;
+      color: #f8fafc;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      margin-bottom: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(24, 58, 165, 0.45);
+      flex-shrink: 0;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .subtitle {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 9px;
+      background: rgba(30, 41, 59, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .item:hover {
+      border-color: rgba(59, 130, 246, 0.45);
+      background: rgba(30, 41, 59, 0.85);
+    }
+    .item.done {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(148, 163, 184, 0.18);
+      color: #94a3b8;
+    }
+    .item.done .check {
+      background: #10b981;
+      color: #052e16;
+    }
+    .item-title {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .item-status {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+    .item.done .item-status {
+      color: #34d399;
+    }
+    .btn {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 9px;
+      border: none;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" aria-hidden="true">
+          <defs>
+            <linearGradient id="aaLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgb(24,58,165)" />
+              <stop offset="100%" stop-color="rgb(54,168,240)" />
+            </linearGradient>
+          </defs>
+          <rect width="1024" height="1024" rx="220" fill="url(#aaLogoGrad)" />
+          <rect x="240" y="290" width="544" height="96" rx="30" fill="#F5F8FF" />
+          <rect x="240" y="464" width="544" height="96" rx="30" fill="#F5F8FF" />
+          <rect x="240" y="638" width="544" height="96" rx="30" fill="#F5F8FF" />
+        </svg>
+      </div>
+      <div>
+        <div class="title">AutoApply Companion</div>
+        <div class="subtitle">Side guide active on every page</div>
+      </div>
+    </div>
+    <span class="badge" id="progress-badge">Ready</span>
+  </div>
+  <div class="checklist" id="checklist"></div>
+  <button class="btn" id="toggle-panel-btn">Show / Focus Side Guide on Page</button>
+  <div class="footer">Click any item above to open &amp; validate it.</div>
+  <script src="popup.js"></script>
+</body>
+</html>

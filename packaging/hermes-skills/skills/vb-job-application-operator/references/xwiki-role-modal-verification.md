@@ -1,0 +1,7 @@
+# XWiki native role and application-route verification
+
+1. Inspect the exact visible role label and its current Open status on the official careers board. An observed href="#" can open the complete role modal rather than a separate page.
+2. Click that exact role label through the sole background owner and save the rendered modal, full requirements, work-mode label and literal application instructions. The standalone role HTML or extraction can omit the modal's CV and cover-email footer. An absent email in that partial source does not establish that no hiring route exists.
+3. Accept an exact visible hiring mailto only as the published route it proves. Complete the normal employer identity, current role, duplicate, approved-byte, Sonnet, contact, Sent attachment and correlated delivery-failure checks before campaign credit. Do not construct or infer an address.
+4. Keep geography separate from route recovery. Corroborate the exact role's Remote option against current official employer policy and any named-country limits. International customers, another role or an overseas colleague alone do not establish Georgia permission. State Batumi and contractor logistics explicitly without claiming local work authorization.
+5. Reconcile stale research-only queue rows after a genuine route or eligibility change. Preserve the original incomplete source as historical evidence, and never repeat an application or invitation merely to repair its source record.

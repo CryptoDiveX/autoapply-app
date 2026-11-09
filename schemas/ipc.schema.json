@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autoapply.app/schemas/ipc.schema.json",
+  "title": "AutoApply Versioned IPC Envelope Schema (Protocol v1)",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "request_id",
+    "run_id",
+    "type",
+    "operation",
+    "caller_id",
+    "auth_tag",
+    "payload"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "job_id": {
+      "type": ["string", "null"]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "command",
+        "proposal",
+        "approval_request",
+        "user_decision",
+        "progress",
+        "health",
+        "heartbeat",
+        "cancellation",
+        "result",
+        "evidence_reference",
+        "recoverable_error",
+        "fatal_error"
+      ]
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deadline_ms": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "caller_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "auth_tag": {
+      "type": "string",
+      "minLength": 16
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

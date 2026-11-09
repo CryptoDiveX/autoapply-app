@@ -1,0 +1,7 @@
+# Wix careers helper versus hiring inventory
+
+1. Parse a Wix careers page's public `script#wix-viewer-model` JSON offline when extraction exposes only its shell. Inspect only employer careers links and the `siteFeaturesConfigs.codeEmbed.htmlEmbeds` entries relevant to hiring; do not execute page code.
+2. A custom embed named `HTML Helper JazzHR` can contain only `resumatorResizeParentIframe`, `resumatorGetParam` and parent iframe sizing logic. This proves a helper was published, not that a current JazzHR board, vacancy or candidate form exists. Preserve the exact helper excerpt and visible careers text without constructing an ATS subdomain or application endpoint.
+3. Keep a mirror's worldwide label separate from an exact role description saying UK-wide or another restricted geography. A careers shell with no observed current roles is unresolved inventory, not employer-wide closure, and does not clear that conflict.
+4. If a legacy employer GitHub jobs-document URL returns HTTP404, retain its requested/final URL, retrieval time and status. Indexed snippets from that deleted file do not establish current job openness. Do not treat document deletion as closure of every employer vacancy or substitute a similarly named company.
+5. When an optional HTML parsing package is unavailable after HTTP evidence was saved, recover only offline parsing with `html.parser.HTMLParser`; never repeat a network request merely to change parsers. Bind link labels strictly to their own anchors and test that trailing unrelated text is excluded.

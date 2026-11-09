@@ -1,0 +1,7 @@
+# Recruitee phone and multipart verification
+
+1. When a virtualized phone-country menu opens near its default selection and bounded normal scrolling does not settle, close only that menu and enter the exact full canon international number through the native phone input. Require auto-recognized Canada calling code and normalized digits. A phone calling code is not current residence. Recover only the untouched field, never repeat a submit or upload.
+2. For deferred native multipart CV transmission, repeat the approved-file guard immediately before Send. Capture the final candidates POST and correlated response in the same session, and retrieve request postData before closing that session.
+3. Whitelist all actual candidate text and custom-question names observed in the final serialization, including camelCase or array naming, while excluding tokens, CAPTCHA and device/security fields. An underscore-only custom-question filter can silently omit valid answers. Preserve pre-submit FormData separately.
+4. If a later read-only request reports No resource with given id, retain the original successful response, actual candidate/File state and captured filename. Label unavailable final custom-answer bytes explicitly. Never resend or reupload to repair an audit.
+5. Do not select International or Canada by changing React internals or treating a virtualized slice as exhaustive. Native international-number auto-detection is a valid field-recovery path only after readback proves the actual calling code and full digits.

@@ -1,0 +1,7 @@
+# Public JavaScript legal-source recovery
+
+1. When an official legal page renders an empty shell, inspect the exact currently published HTML and route chunk for an observed public content source, such as `fetch('/content/privacy-policy.md')`. A read-only GET to that exact source can recover current employer identity. Never invent a legal endpoint or enter candidate data while eligibility remains unresolved.
+2. Save the HTML-to-bundle-to-content chain, final URL, retrieval timestamp and stated effective date. A published Markdown source is current official source evidence, not an archived copy or an application confirmation.
+3. Distinguish the employer's legal entity from a separately named client or service provider. The client entity does not establish the employer's country.
+4. Do not infer operational headquarters or incorporation country from governing law, third-party listings, stale search extracts, a founder's residence or an unlabeled contact address. Preserve those separately and keep the prospect research-only until required official identity, headquarters and role-market gates pass.
+5. If a shared queue's full-write guard refuses a partial or deduplicated read, recover only queue metadata with targeted patches bound to exact top-level JSON field spans. Parse field values with a JSON decoder rather than replacing the first textual key occurrence. Preserve newer scout content and verify intended root fields. Never replay a send, tracker mutation or ledger append to repair queue metadata.

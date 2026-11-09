@@ -1,0 +1,26 @@
+# Native field commitment and exact role geography
+
+## Offline package review
+
+For package-only or pre-submit-review requests, try `web_extract` on the public application route to inventory field labels and questions when a raw HTTP fetch returns only the shell or a 403. This is public read-only discovery, not permission to fill or upload through a live candidate form. Treat extracted labels as an inventory, not proof of required flags, option values or all conditional questions. Show the unchanged approved resume, exact cover-letter file/text and all planned answers together; preserve a target-specific review hold in artifacts and the sole owner's handoff. Conditional questions or new legal acknowledgements remain unapproved. Public extraction can omit entire additional application/survey sections, including required sponsorship, salary/source questions and optional future-contact consent, even when basic fields render. Never describe the public inventory as a complete native form. Verify all native FormRender sections and attached surveys through an authorized read-only route before calling the review complete; if that inspection is not authorized or available, state the limitation and stop for newly discovered material answers/consents. In approved-document mode, do not reconstruct an editable resume merely to satisfy a generic review-package DOCX checklist.
+
+## Ashby required radios
+
+1. Require the exact current ancestor FormFieldEntry.fieldValue for every selected radio. DOM checked and an intermediate controlled radio-group value can look correct while server-saved fieldValue is null. Read `aria-pressed` before clicking a Yes/No option: clicking an already-selected No can toggle it off and clear a required value to null. Select only when needed, settle a native mouse/keyboard action, and re-read current committed state. Normalize `fieldValue.__typename === 'JSONBox'` through `fieldValue.value` for scalar/Boolean/list comparisons, while retaining native File objects and IDs. A JSONBox wrapping true is not literally true; false is a valid committed Boolean, not a missing value. After a wrapper-parsing assertion, recover the read-only QA and remaining unsent fields, never repeat successful uploads or navigate away from staged files. Do not assume the page has an HTML form element; validate actual inputs and required committed field entries instead.
+2. If one normal submit explicitly returns FormRender with missing-entry errors for these radios, preserve the rejected response. HTTP200 alone is not success.
+3. Recover only the supported selections through individually settled native mouse or keyboard actions. Verify exact non-null FormFieldEntry values, unchanged files, location and contacts, then allow one bounded ordinary Submit retry with the immediate approved-file guard.
+4. Never rerun uploads or preparation to repair radios. Never retry a successful or uncertain submission.
+
+## Sequential text-field commitment
+
+Enter and settle each Ashby text/email/profile field before moving to the next. Several rapid native edits can dispatch overlapping ApiSetFormValue requests for the same FormRender and leave a later returned FormFieldEntry null even while its visible DOM value is correct. Re-read the current ancestor fieldValue after the response settles; if only an unsent field is uncommitted, recover that field with native select, Backspace, insertion and blur, then verify every required field and the unchanged File UUID together. Preserve the original upload and audit receipts, and never rerun preparation, upload or a successful Submit to repair field-save or verifier races.
+
+## Native confirmation wording
+
+Recognize the observed `Success` heading and `Your application was successfully submitted. We'll contact you if there are next steps.` as current normal Ashby confirmation wording. Require the exact jobPostingId, submitted formRenderIdentifier, saved resume reference, correlated HTTP200 application FormSubmitSuccess and the visible normal-flow confirmation together. Do not wait for an older thanks phrase or repeat a successful submit to obtain different wording.
+
+Employer-customized acknowledgements can instead say `Your application just landed at Manychat!`. Recognize the native Success heading and target-specific receipt together with correlated native proof, not one hard-coded sentence. `ApiSubmitMultipleFormsAction` returns `submitMultipleFormsAction.applicationFormResult` plus `surveyFormResults`; require application FormSubmitSuccess and success for every relevant returned survey. Recover the original submission timestamp from the actual observed operation's normal performance resource entry, not a filter fixed to the single-form operation. An empty timestamp filter or a different success wrapper is a readback issue, never permission to submit again.
+
+## Broad remote headings
+
+Read the complete native job body before promoting Global (Remote). A role can still require residence in a specific region, regular field operations and local languages. Save broad headings and restrictive paragraphs together and apply the narrower requirements. Keep assessment-only routes separate from ordinary resume applications; an Apply button does not authorize starting an assessment.

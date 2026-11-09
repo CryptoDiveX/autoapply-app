@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autoapply.app/schemas/provider.schema.json",
+  "title": "AutoApply Provider Route and Action Proposal Schema",
+  "type": "object",
+  "required": [
+    "role_id",
+    "provider",
+    "model_id",
+    "credential_ref",
+    "supports_native_tools",
+    "supports_vision",
+    "supports_structured_outputs",
+    "context_length",
+    "gate_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "role_id": {
+      "type": "string",
+      "enum": [
+        "orchestrator.primary",
+        "orchestrator.fallback",
+        "writer.primary",
+        "helper.compression_and_qa"
+      ]
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["openai_chatgpt_commercial", "openrouter"]
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "credential_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supports_native_tools": {
+      "type": "boolean"
+    },
+    "supports_vision": {
+      "type": "boolean"
+    },
+    "supports_structured_outputs": {
+      "type": "boolean"
+    },
+    "context_length": {
+      "type": "integer",
+      "minimum": 1024
+    },
+    "gate_id": {
+      "type": ["string", "null"]
+    }
+  }
+}

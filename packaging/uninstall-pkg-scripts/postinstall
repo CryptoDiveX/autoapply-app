@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# =============================================================================
+# AutoApply Apple .pkg Uninstaller Postinstall Script
+# =============================================================================
+set -euo pipefail
+
+CONSOLE_USER="$(stat -f "%Su" /dev/console 2>/dev/null || true)"
+if [[ -z "${CONSOLE_USER}" || "${CONSOLE_USER}" == "root" ]]; then
+    CONSOLE_USER="${SUDO_USER:-${USER:-$(id -un)}}"
+fi
+
+USER_HOME=""
+if [[ -n "${CONSOLE_USER}" ]]; then
+    USER_HOME="$(dscl . -read "/Users/${CONSOLE_USER}" NFSHomeDirectory 2>/dev/null | awk '{print $2}' || true)"
+fi
+if [[ -z "${USER_HOME}" || ! -d "${USER_HOME}" ]]; then
+    USER_HOME="${HOME:-/Users/${CONSOLE_USER}}"
+fi
+
+DATA_ROOT="${USER_HOME}/Library/Application Support/AutoApply"
+
+# 1. Stop ONLY AutoApply-owned processes (never external Chromium, CloakBrowser, or Hermes)
+pkill -f "/Applications/AutoApply.app/Contents/MacOS/AutoApply" 2>/dev/null || true
+pkill -f "/Applications/AutoApply.app/Contents/Resources/Browser/Chromium.app" 2>/dev/null || true
+pkill -f "Application Support/AutoApply/browser-profiles" 2>/dev/null || true
+pkill -f "Application Support/AutoApply/runtime-state" 2>/dev/null || true
+
+# 2. Remove AutoApply Keychain secrets (strictly scoped to com.autoapply.macos.secrets)
+if [[ -n "${CONSOLE_USER}" && "${CONSOLE_USER}" != "root" ]]; then
+    for KEY_ACCOUNT in "OPENROUTER_API_KEY" "CAPSOLVER_API_KEY" "HERMES_CHATGPT_SESSION" "GMAIL_APP_PASSWORD"; do
+        su - "${CONSOLE_USER}" -c "security delete-generic-password -s 'com.autoapply.macos.secrets' -a '${KEY_ACCOUNT}'" >/dev/null 2>&1 || true
+    done
+else
+    for KEY_ACCOUNT in "OPENROUTER_API_KEY" "CAPSOLVER_API_KEY" "HERMES_CHATGPT_SESSION" "GMAIL_APP_PASSWORD"; do
+        security delete-generic-password -s "com.autoapply.macos.secrets" -a "${KEY_ACCOUNT}" >/dev/null 2>&1 || true
+    done
+fi
+
+# 3. Remove AutoApply Application Support, Caches, Preferences, and Saved State
+if [[ -d "${DATA_ROOT}" ]]; then
+    rm -rf "${DATA_ROOT}"
+fi
+rm -rf "${USER_HOME}/Library/Caches/com.autoapply.macos" 2>/dev/null || true
+rm -rf "${USER_HOME}/Library/Caches/AutoApply" 2>/dev/null || true
+rm -f  "${USER_HOME}/Library/Preferences/com.autoapply.macos.plist" 2>/dev/null || true
+rm -rf "${USER_HOME}/Library/Saved Application State/com.autoapply.macos.savedState" 2>/dev/null || true
+rm -rf "${USER_HOME}/Library/HTTPStorages/com.autoapply.macos" 2>/dev/null || true
+rm -rf "${USER_HOME}/Library/WebKit/com.autoapply.macos" 2>/dev/null || true
+
+# 4. Remove /Applications/AutoApply.app and forget package receipts
+if [[ -d "/Applications/AutoApply.app" ]]; then
+    rm -rf "/Applications/AutoApply.app"
+fi
+pkgutil --forget "com.autoapply.macos.pkg" >/dev/null 2>&1 || true
+pkgutil --forget "com.autoapply.macos.uninstaller.pkg" >/dev/null 2>&1 || true
+
+exit 0

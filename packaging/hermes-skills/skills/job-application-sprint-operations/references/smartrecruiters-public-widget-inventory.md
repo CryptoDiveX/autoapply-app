@@ -1,0 +1,9 @@
+# SmartRecruiters public widget inventories
+
+1. Preserve the exact employer careers page, its company_code and api_url, and the observed public smart_widget.js URL before deriving a public inventory route. This binds the inventory to the employer rather than a guessed namesake account.
+2. Inspect the shipped script offline. When it explicitly constructs /job-api/public/search/widgets/<company_code>/postings, use read-only GET on that observed host and construction. Retain documented offset and limit parameters and never call candidate, account, upload or apply routes as a scout.
+3. Save the complete response and retrieval URL/time, declared numFound and actual results length. Corroborate pagination before calling the published widget inventory complete. Do not transfer this completeness claim to other destinations or uninspected boards.
+4. Keep publicationId distinct from jobVacancyId. Multiple city publications can refer to the same vacancy. Report both returned publications and unique vacancy IDs; do not count ten city rows as ten different openings when they represent only three vacancies.
+5. Keep company-wide work-anywhere culture separate from each vacancy's country labels and requirements. Absence of a PM or customer-success title establishes no matching role in that current published widget, not employer-wide closure.
+6. When a current native Greenhouse inventory differs from an extracted employer careers list, preserve both responses. Use current native role identity and requirements before ranking. A stale extraction with Apply links does not establish current openness, and a removed mirror does not override an actually current native role.
+7. Keep source-recovery lessons in small topical reference files if an existing umbrella reference reaches its tool size limit. Link the new reference from SKILL.md rather than retrying an oversized patch or rewriting the existing reference and losing its history.

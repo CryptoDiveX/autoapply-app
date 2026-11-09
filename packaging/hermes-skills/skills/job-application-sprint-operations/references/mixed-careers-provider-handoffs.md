@@ -1,0 +1,6 @@
+# Mixed careers-provider handoffs
+
+1. Inspect both ordinary careers anchors and published embedded ATS scripts before treating an inactive provider as the current hiring inventory. A careers page can retain stale JazzHR Get Started cards while its actual open-roles section embeds a current Ashby board.
+2. Preserve both observed routes and the employer-to-board link chain. Recover only the read-only current inventory, then inspect the complete role list and country metadata. An inactive legacy account does not close the new board.
+3. Keep work-mode and country gates independent: a current Remote boolean does not override Hybrid work mode or establish Georgia hiring. Do not substitute a general talent network for an advertised vacancy or use an unrelated contact inbox to bypass the unresolved route.
+4. Resolve brand-to-parent careers redirects against existing source lifecycles before opening the destination board. Save an official unified-team statement, the observed redirect and the exact board ID as alias evidence. A newly discovered brand route that lands on an already inspected unchanged parent board is route-discovery evidence, not fresh vacancy supply or permission to repeat candidate actions. For example, Beamer's Jobs link can redirect to Userflow careers and its existing Elly inventory.
